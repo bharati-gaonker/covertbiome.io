@@ -1,153 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CovertBiome | Decoding Hidden Bio Signals</title>
-  <meta name="description" content="CovertBiome is an AI-driven computational biology research startup decoding hidden biological signals from fragmented biomedical data." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#040711;--bg2:#07101f;--panel:#0b1424;--panel2:#101b2d;
-      --text:#eef4fb;--muted:#9eacc2;--soft:#c4cfdd;
-      --gold:#d7ad62;--blue:#43b6ff;--teal:#39d6c6;--line:rgba(255,255,255,.13);
-    }
-    *{box-sizing:border-box} html{scroll-behavior:smooth}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);line-height:1.6;background:
-      radial-gradient(circle at 18% 12%,rgba(67,182,255,.19),transparent 31%),
-      radial-gradient(circle at 82% 8%,rgba(215,173,98,.14),transparent 29%),
-      linear-gradient(180deg,var(--bg),var(--bg2) 55%,#03050b);}
-    a{color:inherit}.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
-    header{position:sticky;top:0;z-index:10;border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(16px);background:rgba(4,7,17,.72)}
-    .nav{height:76px;display:flex;align-items:center;justify-content:space-between}
-    .brand{display:flex;align-items:center;gap:13px;font-weight:900;font-size:24px;letter-spacing:-.65px}.brand .covert{color:#d9e5f1}.brand .biome{color:var(--gold)}
-    .mark{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;position:relative;background:linear-gradient(145deg,rgba(255,255,255,.1),rgba(255,255,255,.02));border:1px solid rgba(215,173,98,.45);box-shadow:0 0 36px rgba(67,182,255,.12)}
-    .mark:before{content:"";width:24px;height:24px;border-radius:50%;border:2px solid var(--gold);box-shadow:inset 0 0 0 4px rgba(67,182,255,.08)}.mark:after{content:"";position:absolute;width:22px;height:2px;background:linear-gradient(90deg,var(--blue),var(--gold));transform:rotate(-32deg);border-radius:99px}
-    nav a{font-size:14px;color:var(--muted);text-decoration:none;margin-left:24px;font-weight:600}nav a:hover{color:var(--text)}
-    .hero{display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center;padding:88px 0 76px}.eyebrow{color:var(--gold);text-transform:uppercase;letter-spacing:2.3px;font-size:13px;font-weight:800}.tag{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);background:rgba(255,255,255,.04);padding:8px 12px;border-radius:999px;color:var(--soft);font-size:13px;margin-bottom:22px}.dot{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 14px var(--teal)}
-    h1{font-size:clamp(44px,6.6vw,78px);line-height:.98;margin:16px 0 24px;letter-spacing:-3.8px}.lead{font-size:20px;color:var(--muted);max-width:720px}.cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 18px;border-radius:999px;font-weight:800;text-decoration:none}.primary{background:linear-gradient(135deg,var(--gold),#f4d694);color:#07101f}.secondary{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text)}
-    .visual{min-height:430px;border:1px solid var(--line);border-radius:30px;background:linear-gradient(155deg,rgba(255,255,255,.09),rgba(255,255,255,.025));position:relative;overflow:hidden;box-shadow:0 35px 120px rgba(0,0,0,.42)}
-    .orb{position:absolute;inset:58px;border-radius:50%;border:1px solid rgba(215,173,98,.28)}.orb.two{inset:100px;border-color:rgba(67,182,255,.28)}
-    .wave{position:absolute;left:44px;right:44px;top:51%;height:3px;background:linear-gradient(90deg,transparent,var(--blue),var(--teal),var(--gold),transparent);filter:drop-shadow(0 0 14px rgba(67,182,255,.55))}
-    .node{position:absolute;width:13px;height:13px;border-radius:50%;background:var(--gold);box-shadow:0 0 20px var(--gold)}.n1{top:92px;left:112px}.n2{top:178px;right:94px;background:var(--blue);box-shadow:0 0 20px var(--blue)}.n3{bottom:94px;left:170px;background:var(--teal);box-shadow:0 0 20px var(--teal)}.n4{bottom:128px;right:142px}
-    section{padding:66px 0;border-top:1px solid rgba(255,255,255,.07)}.section-head{max-width:790px}.kicker{color:var(--gold);font-weight:800;font-size:13px;letter-spacing:1.7px;text-transform:uppercase}.section-title{font-size:clamp(30px,4vw,46px);line-height:1.08;margin:12px 0 16px;letter-spacing:-1.8px}.muted{color:var(--muted)}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}.card{border:1px solid var(--line);border-radius:24px;background:rgba(11,20,36,.72);padding:25px}.card h3{margin:0 0 10px;color:var(--text);font-size:20px}.card p{margin:0;color:var(--muted)}.icon{width:38px;height:38px;border-radius:12px;border:1px solid rgba(215,173,98,.32);background:rgba(215,173,98,.09);margin-bottom:16px;display:grid;place-items:center;color:var(--gold);font-weight:900}
-    .pipeline{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:30px}.step{border:1px solid var(--line);border-radius:20px;padding:19px;background:rgba(255,255,255,.04);min-height:150px;position:relative}.num{color:var(--blue);font-size:13px;font-weight:900}.step strong{display:block;margin:9px 0 7px}.step span{display:block;color:var(--muted);font-size:14px;line-height:1.45}.wide{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px}.panel{border:1px solid var(--line);border-radius:26px;background:linear-gradient(180deg,rgba(16,27,45,.84),rgba(11,20,36,.7));padding:28px}.panel ul{margin:14px 0 0;padding-left:18px;color:var(--muted)}.panel li{margin:8px 0}
-    .repo{margin-top:30px;border:1px solid rgba(57,214,198,.28);border-radius:28px;background:linear-gradient(135deg,rgba(57,214,198,.09),rgba(67,182,255,.08),rgba(11,20,36,.78));padding:30px}.repo-top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px}.repo-name{font-size:24px;font-weight:900;letter-spacing:-.6px;margin:5px 0 8px}.repo-path{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--teal);font-size:14px;word-break:break-all}.repo-details{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}.repo-detail{border:1px solid var(--line);border-radius:18px;background:rgba(4,7,17,.38);padding:18px}.repo-detail strong{display:block;margin-bottom:6px}.repo-detail span{color:var(--muted);font-size:14px}.status{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid rgba(57,214,198,.28);border-radius:999px;color:var(--soft);font-size:13px;font-weight:700;white-space:nowrap}
-    .contact{display:flex;align-items:center;justify-content:space-between;gap:22px;border:1px solid var(--line);border-radius:30px;background:linear-gradient(135deg,rgba(67,182,255,.12),rgba(215,173,98,.1));padding:34px;margin-top:28px}
-    footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted);font-size:14px}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.foot a{color:var(--soft);text-decoration:none}.foot a:hover{color:var(--text)}
-    @media(max-width:900px){nav{display:none}.hero,.wide{grid-template-columns:1fr}.grid,.pipeline,.repo-details{grid-template-columns:1fr}.visual{min-height:330px}.contact,.repo-top{display:block}.contact .cta,.repo-top .cta{margin-top:18px}h1{letter-spacing:-2.4px}}
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CovertBiome | Decoding Hidden Bio Signals</title>
+<meta name="description" content="CovertBiome is an AI-driven computational biology startup building biological intelligence from fragmented biomedical data." />
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#040711;--bg2:#07101f;--text:#eef4fb;--muted:#9eacc2;--gold:#d7ad62;--blue:#43b6ff;--teal:#39d6c6;--line:rgba(255,255,255,.12)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--text);background:radial-gradient(circle at 18% 12%,rgba(67,182,255,.19),transparent 31%),radial-gradient(circle at 82% 8%,rgba(215,173,98,.14),transparent 29%),linear-gradient(180deg,var(--bg),var(--bg2) 55%,#03050b)}a{color:inherit}.wrap{max-width:1160px;margin:0 auto;padding:0 24px}header{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);background:rgba(4,7,17,.72);border-bottom:1px solid rgba(255,255,255,.08)}.nav{height:74px;display:flex;align-items:center;justify-content:space-between}.brand{font-size:24px;font-weight:900}.brand .covert{color:#d9e5f1}.brand .biome{color:var(--gold)}nav a{font-size:14px;color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600}.hero{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;padding:84px 0 70px}.tag{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);padding:8px 12px;border-radius:999px;color:#c7d4e6;font-size:13px}.dot{width:7px;height:7px;border-radius:50%;background:var(--teal)}h1{font-size:clamp(42px,6vw,74px);line-height:.98;letter-spacing:-2.6px;margin:18px 0}.lead{font-size:20px;color:var(--muted)}.mini{font-size:15px;color:#c7d4e6}.cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}.btn{padding:13px 18px;border-radius:999px;font-weight:800;text-decoration:none}.primary{background:linear-gradient(135deg,var(--gold),#f4d694);color:#07101f}.secondary{border:1px solid var(--line);background:rgba(255,255,255,.04)}.visual{min-height:460px;border:1px solid var(--line);border-radius:28px;position:relative;overflow:hidden;background:linear-gradient(155deg,rgba(255,255,255,.09),rgba(255,255,255,.025));box-shadow:0 35px 120px rgba(0,0,0,.42)}#globeCanvas{position:absolute;inset:0;width:100%;height:100%}.caption{position:absolute;left:20px;bottom:20px;max-width:290px;background:rgba(4,7,17,.55);padding:12px 14px;border:1px solid rgba(255,255,255,.1);border-radius:16px;font-size:14px;color:#dbe6f4}.chip{position:absolute;right:20px;bottom:20px;border:1px solid rgba(255,255,255,.12);background:rgba(4,7,17,.55);padding:8px 12px;border-radius:999px;font-size:12px;color:#dbe6f4}section{padding:68px 0;border-top:1px solid rgba(255,255,255,.07)}.kicker{color:var(--gold);font-size:13px;font-weight:800;letter-spacing:1.7px;text-transform:uppercase}.section-title{font-size:clamp(28px,4vw,44px);line-height:1.08;margin:12px 0 14px}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}.card,.panel{border:1px solid var(--line);border-radius:22px;background:rgba(11,20,36,.72);padding:24px}.icon{width:38px;height:38px;border-radius:12px;border:1px solid rgba(215,173,98,.32);background:rgba(215,173,98,.09);margin-bottom:14px;display:grid;place-items:center;color:var(--gold);font-weight:900}.card h3,.panel h3{margin-top:0}.pipeline{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:26px}.step{border:1px solid var(--line);border-radius:18px;padding:18px;background:rgba(255,255,255,.04);min-height:150px}.num{font-size:12px;color:var(--blue);font-weight:900}.step strong{display:block;margin:8px 0 6px}.step span,.panel li{color:var(--muted);font-size:14px}.repo{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:28px}.pills{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 14px}.pill{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);font-size:12px;color:#dbe6f4}.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}.stat{border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:14px;background:rgba(255,255,255,.03)}.stat strong{display:block;font-size:22px}.stat span{display:block;color:var(--muted);font-size:13px}.two{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}.contact{display:flex;justify-content:space-between;gap:22px;align-items:center;border:1px solid var(--line);border-radius:28px;background:linear-gradient(135deg,rgba(67,182,255,.12),rgba(215,173,98,.1));padding:30px}.foot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:30px 0;color:var(--muted);font-size:14px}@media(max-width:980px){nav{display:none}.hero,.repo,.two{grid-template-columns:1fr}.grid,.pipeline,.stats{grid-template-columns:1fr}.contact{display:block}}
+</style>
 </head>
 <body>
-<header>
-  <div class="wrap nav">
-    <div class="brand"><div class="mark" aria-hidden="true"></div><span><span class="covert">Covert</span><span class="biome">Biome</span></span></div>
-    <nav>
-      <a href="#research">Research</a>
-      <a href="#platform">Platform</a>
-      <a href="#data">Data</a>
-      <a href="#github">GitHub</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
+<header><div class="wrap nav"><div class="brand"><span class="covert">covert</span><span class="biome">Biome</span></div><nav><a href="#research">Research</a><a href="#platform">Platform</a><a href="#github">GitHub</a><a href="#data">Data</a><a href="#contact">Contact</a></nav></div></header>
 <main>
-<section class="wrap hero">
-  <div>
-    <div class="tag"><span class="dot"></span> Early-stage AI-based computational biology startup</div>
-    <div class="eyebrow">CovertBiome</div>
-    <h1>Decoding Hidden Bio Signals</h1>
-    <p class="lead">CovertBiome builds AI-driven biological intelligence to decode hidden bio signals, map disease mechanisms, and uncover therapeutic relationships from fragmented biomedical data.</p>
-    <div class="cta">
-      <a class="btn primary" href="#platform">View Platform</a>
-      <a class="btn secondary" href="https://github.com/bharati-gaonker/covertbiome-research" target="_blank" rel="noopener noreferrer">Explore Public Research</a>
-    </div>
-  </div>
-  <div class="visual" aria-label="Abstract biomedical signal network"><div class="orb"></div><div class="orb two"></div><div class="wave"></div><div class="node n1"></div><div class="node n2"></div><div class="node n3"></div><div class="node n4"></div></div>
-</section>
-
-<section id="research">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">Research Direction</div>
-      <h2 class="section-title">Building a computational intelligence layer for disease biology.</h2>
-      <p class="lead">Our research focuses on connecting fragmented biomedical evidence into structured representations that can expose hidden biological signals and support testable hypotheses.</p>
-    </div>
-    <div class="grid">
-      <div class="card"><div class="icon">01</div><h3>Disease Mechanisms</h3><p>Map biological pathways, genes, phenotypes, and molecular signals associated with disease progression and response.</p></div>
-      <div class="card"><div class="icon">02</div><h3>Drug Relationships</h3><p>Connect drugs, targets, mechanisms, clinical evidence, and biological context to study therapeutic relationships.</p></div>
-      <div class="card"><div class="icon">03</div><h3>Hidden Signals</h3><p>Detect patterns across fragmented datasets that may reveal new hypotheses for research and discovery.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="platform">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">Platform Concept</div>
-      <h2 class="section-title">From fragmented biomedical data to mechanistic insight.</h2>
-      <p class="muted">A single research platform designed to combine data harmonization, biological knowledge structures, multimodal machine learning, and representation learning.</p>
-    </div>
-    <div class="pipeline">
-      <div class="step"><div class="num">01</div><strong>Collect</strong><span>Omics, literature, pathway, drug, clinical, and public biomedical data.</span></div>
-      <div class="step"><div class="num">02</div><strong>Harmonize</strong><span>Clean, normalize, and align fragmented data into common structures.</span></div>
-      <div class="step"><div class="num">03</div><strong>Connect</strong><span>Create maps across genes, pathways, diseases, drugs, and phenotypes.</span></div>
-      <div class="step"><div class="num">04</div><strong>Model</strong><span>Learn biological representations using multimodal AI and graph-based methods.</span></div>
-      <div class="step"><div class="num">05</div><strong>Discover</strong><span>Surface biological signals and generate research hypotheses for further validation.</span></div>
-    </div>
-  </div>
-</section>
-
-<section id="data">
-  <div class="wrap">
-    <div class="section-head"><div class="kicker">Data Approach</div><h2 class="section-title">Public data first, research integrity always.</h2></div>
-    <div class="wide">
-      <div class="panel"><h3>Biomedical Data Inputs</h3><ul><li>Public omics and disease datasets</li><li>Drug, target, and pathway resources</li><li>Biomedical literature and curated annotations</li><li>Clinical trial and therapeutic evidence sources</li></ul></div>
-      <div class="panel"><h3>Responsible Research Use</h3><ul><li>Non-diagnostic research platform</li><li>Designed for hypothesis generation</li><li>Privacy-aware data handling</li><li>Evidence tracking and reproducible workflows</li></ul></div>
-    </div>
-  </div>
-</section>
-
-<section id="github">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">Open Research</div>
-      <h2 class="section-title">Follow the public CovertBiome research build on GitHub.</h2>
-      <p class="lead">We are opening a public-safe layer of the research program so collaborators, researchers, engineers, and investors can follow the technical direction and reproducible proof-of-concept work.</p>
-    </div>
-    <div class="repo">
-      <div class="repo-top">
-        <div>
-          <div class="status"><span class="dot"></span> Public research repository</div>
-          <div class="repo-name">CovertBiome Research</div>
-          <div class="repo-path">github.com/bharati-gaonker/covertbiome-research</div>
-        </div>
-        <div class="cta" style="margin-top:0"><a class="btn primary" href="https://github.com/bharati-gaonker/covertbiome-research" target="_blank" rel="noopener noreferrer">View on GitHub</a></div>
-      </div>
-      <div class="repo-details">
-        <div class="repo-detail"><strong>Initial POC: PDAC</strong><span>Public proof-of-concept work focused on pancreatic ductal adenocarcinoma and multimodal biological representation learning.</span></div>
-        <div class="repo-detail"><strong>What is public</strong><span>Research architecture, configurations, baseline code, data-harmonization scaffolding, tests, CI, and reproducibility documentation.</span></div>
-        <div class="repo-detail"><strong>What remains private</strong><span>Proprietary training recipes, causal and mechanistic reasoning systems, private model weights, partner data, and unpublished therapeutic hypotheses.</span></div>
-      </div>
-      <p class="muted" style="margin:22px 0 0">No raw patient datasets or protected health information are published in the repository. Public dataset users remain responsible for applicable source licenses and data-use requirements.</p>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="wrap">
-    <div class="contact">
-      <div><div class="kicker">covertbiome.io</div><h2 class="section-title" style="margin-bottom:6px">Founder-led research startup.</h2><p class="muted" style="margin:0">AI-driven computational biology for hidden bio signal discovery.</p></div>
-      <div class="cta" style="margin-top:0"><a class="btn primary" href="mailto:founder@covertbiome.io">founder@covertbiome.io</a><a class="btn secondary" href="https://github.com/bharati-gaonker/covertbiome-research" target="_blank" rel="noopener noreferrer">GitHub Research</a></div>
-    </div>
-  </div>
-</section>
+<section class="wrap hero"><div><div class="tag"><span class="dot"></span> Founder-led AI computational biology startup</div><h1>Decoding Hidden Bio Signals</h1><p class="lead">CovertBiome builds biological intelligence from fragmented biomedical data to uncover hidden signals, map disease mechanisms, and reveal therapeutic relationships.</p><p class="mini">We are developing a multimodal AI research platform that connects genomics, transcriptomics, proteomics, pathology, clinical evidence, literature, and pathway biology into a structured discovery engine.</p><div class="cta"><a class="btn primary" href="#platform">Explore Platform</a><a class="btn secondary" href="#github">View GitHub</a></div></div><div class="visual"><canvas id="globeCanvas"></canvas><div class="caption">A living map of fragmented biomedical signals - designed to surface structure, not just collect data.</div><div class="chip">Signal globe - multimodal biomedical intelligence</div></div></section>
+<section id="research"><div class="wrap"><div class="kicker">Research Direction</div><h2 class="section-title">Building a computational intelligence layer for disease biology.</h2><p class="lead">Our work focuses on translating fragmented biological evidence into research-ready structure - connecting disease mechanisms, hidden molecular signals, and therapeutic hypotheses.</p><div class="grid"><div class="card"><div class="icon">01</div><h3>Disease Mechanisms</h3><p class="muted">Map pathways, genes, phenotypes, tumor states, and molecular drivers associated with disease progression and response.</p></div><div class="card"><div class="icon">02</div><h3>Drug Relationships</h3><p class="muted">Connect drugs, targets, mechanisms, clinical evidence, and biological context to identify therapeutic relationships and research opportunities.</p></div><div class="card"><div class="icon">03</div><h3>Hidden Signals</h3><p class="muted">Detect patterns across fragmented datasets that may reveal overlooked structure, patient stratification signals, and novel hypotheses.</p></div></div></div></section>
+<section id="platform"><div class="wrap"><div class="kicker">Platform Concept</div><h2 class="section-title">From fragmented biomedical data to mechanistic insight.</h2><p class="muted">The CovertBiome platform is designed as a research system combining data harmonization, biological knowledge organization, multimodal machine learning, and representation learning.</p><div class="pipeline"><div class="step"><div class="num">01</div><strong>Collect</strong><span>Omics, pathology, literature, pathway, drug, clinical, and public biomedical datasets.</span></div><div class="step"><div class="num">02</div><strong>Harmonize</strong><span>Clean, normalize, and align fragmented data into shared research-ready structures.</span></div><div class="step"><div class="num">03</div><strong>Connect</strong><span>Create maps across genes, pathways, diseases, drugs, modalities, and phenotypes.</span></div><div class="step"><div class="num">04</div><strong>Model</strong><span>Learn biological representations using AI, multimodal learning, and graph-informed methods.</span></div><div class="step"><div class="num">05</div><strong>Discover</strong><span>Generate patient-state insights, mechanism hypotheses, and therapeutic relationship maps.</span></div></div></div></section>
+<section id="github"><div class="wrap"><div class="kicker">Open Research</div><h2 class="section-title">CovertBiome public GitHub research repository.</h2><p class="muted">We launched an initial public research repository to share the public-safe scaffolding behind CovertBiome. It introduces our research direction, public proof-of-concept structure, and PDAC-focused starting point without exposing proprietary core reasoning systems.</p><div class="repo"><div class="panel"><h3>covertbiome-research</h3><p class="muted">A public research repository focused on multimodal oncology intelligence, beginning with a pancreatic ductal adenocarcinoma (PDAC) proof of concept and public datasets such as TCGA and CPTAC.</p><div class="pills"><span class="pill">Public GitHub repo</span><span class="pill">PDAC initial POC</span><span class="pill">Multimodal AI</span><span class="pill">Open research scaffold</span></div><p><a href="https://github.com/bharati-gaonker/covertbiome-research" target="_blank" rel="noopener">github.com/bharati-gaonker/covertbiome-research</a></p><div class="stats"><div class="stat"><strong>Public</strong><span>Research scaffolding, documentation, configs, baseline code, and reproducibility materials.</span></div><div class="stat"><strong>Private</strong><span>Proprietary reasoning systems, causal methods, model IP, unpublished targets, and private data workflows.</span></div></div></div><div class="panel"><h3>What the repository communicates</h3><ul><li>Scientific thesis: fragmented biomedical data can be integrated into a useful biological intelligence layer.</li><li>Initial disease focus: PDAC as the first public proof of concept.</li><li>Technical direction: multimodal data harmonization, representation learning, patient-state discovery, and biological signal discovery.</li><li>Execution signal: real public-facing research work and engineering discipline.</li></ul></div></div></div></section>
+<section id="data"><div class="wrap"><div class="kicker">Data Approach</div><h2 class="section-title">Public data first, research integrity always.</h2><div class="two"><div class="panel"><h3>Biomedical Data Inputs</h3><ul><li>Public omics and disease datasets</li><li>Drug, target, pathway, and mechanism resources</li><li>Biomedical literature and curated annotations</li><li>Clinical trial and therapeutic evidence sources</li><li>Pathology and multimodal evidence as available</li></ul></div><div class="panel"><h3>Responsible Research Use</h3><ul><li>Research platform only - not a clinical diagnostic system</li><li>Designed for hypothesis generation and mechanistic exploration</li><li>Privacy-aware data handling and evidence tracking</li><li>Reproducible workflows and transparent research direction</li><li>Clear separation between public research and proprietary platform IP</li></ul></div></div></div></section>
+<section id="contact"><div class="wrap"><div class="contact"><div><div class="kicker">covertbiome.io</div><h2 class="section-title" style="margin-bottom:6px">Founder-led computational biology research startup.</h2><p class="muted" style="margin:0">AI-driven biological intelligence for hidden bio signal discovery, disease mechanism mapping, and therapeutic hypothesis generation.</p></div><div class="cta" style="margin-top:0"><a class="btn primary" href="mailto:founder@covertbiome.io">founder@covertbiome.io</a></div></div></div></section>
 </main>
-<footer>
-  <div class="wrap foot"><span>© 2026 CovertBiome, Inc. All rights reserved.</span><span><a href="https://github.com/bharati-gaonker/covertbiome-research" target="_blank" rel="noopener noreferrer">Public Research on GitHub</a> · Decoding Hidden Bio Signals</span></div>
-</footer>
+<footer><div class="wrap foot"><span>&copy; 2026 CovertBiome, Inc. All rights reserved.</span><span>Decoding Hidden Bio Signals</span></div></footer>
+<script>
+(function(){const c=document.getElementById('globeCanvas');if(!c)return;const x=c.getContext('2d');const d=Math.max(1,window.devicePixelRatio||1);let w=0,h=0,r=0,cx=0,cy=0;const pts=[];for(let i=0;i<=18;i++){const lat=-Math.PI/2+(i/18)*Math.PI;for(let j=0;j<28;j++){pts.push({lat,lon:(j/28)*Math.PI*2});}}function resize(){const rect=c.getBoundingClientRect();w=rect.width;h=rect.height;c.width=Math.round(w*d);c.height=Math.round(h*d);x.setTransform(d,0,0,d,0,0);cx=w*.52;cy=h*.45;r=Math.min(w,h)*.29;}window.addEventListener('resize',resize);resize();function p(lat,lon,rot){const X=Math.cos(lat)*Math.cos(lon+rot),Y=Math.sin(lat),Z=Math.cos(lat)*Math.sin(lon+rot),s=.35+.65*((Z+1)/2);return{x:cx+X*r,y:cy+Y*r,z:Z,s};}function draw(t){t*=.00035;x.clearRect(0,0,w,h);const g=x.createRadialGradient(cx,cy,r*.2,cx,cy,r*1.45);g.addColorStop(0,'rgba(67,182,255,.16)');g.addColorStop(.45,'rgba(57,214,198,.07)');g.addColorStop(1,'rgba(4,7,17,0)');x.fillStyle=g;x.fillRect(0,0,w,h);x.strokeStyle='rgba(255,255,255,.08)';for(let ring=1;ring<=4;ring++){x.beginPath();x.arc(cx,cy,r*(.3+ring*.18),0,Math.PI*2);x.stroke();}x.strokeStyle='rgba(67,182,255,.18)';for(let k=-2;k<=2;k++){x.beginPath();for(let a=0;a<=180;a++){const th=(a/180)*Math.PI,X=cx+Math.cos(th)*r,Y=cy+Math.sin(th)*r*Math.cos(k*.45+t*.8);if(a===0)x.moveTo(X,Y);else x.lineTo(X,Y)}x.stroke()}for(let i=0;i<pts.length;i+=6){const a=p(pts[i].lat,pts[i].lon,t),b=p(pts[(i+11)%pts.length].lat,pts[(i+11)%pts.length].lon,t);if(a.z>-.15&&b.z>-.15){x.strokeStyle=`rgba(57,214,198,${0.06+((a.s+b.s)/2)*0.12})`;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}for(const pt of pts){const q=p(pt.lat,pt.lon,t),alpha=q.z<-.2?.12:.35+q.s*.45;x.beginPath();x.fillStyle=q.z>.55?`rgba(215,173,98,${alpha})`:q.z>0?`rgba(67,182,255,${alpha})`:`rgba(57,214,198,${alpha*.75})`;x.arc(q.x,q.y,1.3+q.s*2.3,0,Math.PI*2);x.fill()}x.strokeStyle='rgba(255,255,255,.18)';x.lineWidth=1.2;x.beginPath();x.arc(cx,cy,r,0,Math.PI*2);x.stroke();requestAnimationFrame(draw)}requestAnimationFrame(draw)})();
+</script>
 </body>
 </html>
